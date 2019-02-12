@@ -1,0 +1,15 @@
+<body>
+	{% include "header.html" %}
+	{% block main %}
+		<div class = "main">
+			<form action = "/registration" method = "post">
+				Podaj login: <input type = "text" name="name" value = "{{name}}" required/><br/>
+				Podaj hasło: <input type = "password" name = "password" required/><br/>
+				Powtórz hasło: <input type = "password" name = "replay_password" required/><br/>
+				<input type="submit" value = "Utwórz" />
+				{{comment2}}
+			</form>
+		</div>
+	{% end %}
+</body>
+</html>

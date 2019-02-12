@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "pl">
+<head>
+	<meta charset = "utf-8">	
+</head>
+<body>
+	{% include "header.html" %}
+	{% block main %}
+		<div class = "main">
+			<form action = "/edit" method = "post">
+				Link: {{link}}<br/>
+				Krótki link: {{home_address}}{{short_link}}<br/>
+				<input type = "hidden" name = "short_link" value = "{{short_link}}" />
+				<input type = "hidden" name = "link" value = "{{link}}" />
+				Czas: 
+					<select name = "time">
+						<option value = "no_time_link" {% if time == "no_time_link" %} selected {% end %}>-</option>
+						<option value = "one_hour_time_link" {% if time == "one_hour_time_link" %} selected {% end %}>1h</option>
+						<option value = "twelve_hours_time_link" {% if time == "twelve_hours_time_link" %} selected {% end %}>12h</option>
+						<option value = "one_day_time_link" {% if time == "one_day_time_link" %} selected {% end %}>24h</option>
+						<option value = "seven_days_time_link" {% if time == "seven_days_time_link" %} selected {% end %}>7dni</option>
+					</select>
+				<input type="radio" name="private" value = "no" {% if typ == "no" %} checked = "checked" {% end %}/>Publiczny
+				<input type="radio" name="private" value = "yes" {% if typ == "yes" %} checked = "checked" {% end %}/>Prywatny
+				<input type="submit" value = "Edytuj" />
+			</form>
+			<form action = "/list" method = "get">
+				<input type="submit" value = "Anuluj" />
+			</form>
+		</div>
+	{% end %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<body>
+	{% include "header.html" %}
+	{% block main %}
+		<div class = "main">
+			{% if short_link %}
+
+				<h2>Twój link: {{ link }}</h2>
+				<h2>Twój krótki link: {{ short_link }}</h2>
+			{% end %}
+			<form action = "/shortener" method = "post">
+				Podaj link: <input type = "url" name="link" required/><br/>
+				Czas:
+					<select name = "time">
+						<option value = "no_time_link">-</option>
+						<option value = "one_hour_time_link">1h</option>
+						<option value = "twelve_hours_time_link">12h</option>
+						<option value = "one_day_time_link">24h</option>
+						<option value = "seven_days_time_link">7dni</option>
+					</select>
+				<input type="radio" name="private" value = "no"  checked = "checked"/>Publiczny
+				<input type="radio" name="private" value = "yes" />Prywatny
+
+				<input type="submit" value = "Tnij" />
+			</form>
+		</div>
+	{% end %}
+</body>

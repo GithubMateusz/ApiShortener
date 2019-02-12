@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang = "pl">
+<head>
+	<meta charset = "utf-8">	
+	<title>Api</title>
+	<link rel = "Stylesheet" type = "text/css" href = "{{ static_url('css/style.css') }}" />
+</head>
+<body>
+	<div class = "panel">
+		<div class = "index">
+			<form action = "/" method = "get">
+				<input type = "submit" value = "Strona Główna" />
+			</form>
+		</div>
+		{% if not login %}
+			<div class = "registration">
+				<form action = "/registration" method = "get">
+					<input type = "submit" value = "Rejestruj" />
+				</form>
+			</div>
+			<div class = "login">
+				<form action = "/login" method = "post">
+					Podaj login: <input type = "text" name = "login"/><br/>
+					Podaj hasło: <input type = "password"  name = "password"//><br/>
+					<input type = "submit" value = "Zaloguj" />
+					{{comment}}
+				</form>
+			</div>
+		{% end %}
+		{% if login %}
+			<div class = "shortener"  >
+				<form action = "/shortener" method = "get">
+					<input type = "submit" value = "Tnij" />
+				</form>
+			</div>
+			<div class = "list">
+				<form action = "/list" method = "get">
+					<input type = "submit" value = "Moje linki" />
+				</form>
+			</div>
+			<div class = "login">
+				<form action = "/logout" method = "get">
+					Zalogowany : {{login}}<br/>
+					<input type = "submit" value = "Wyloguj" />
+				</form>
+			</div>
+		{% end %}
+	</div>
+</body>

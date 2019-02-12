@@ -1,0 +1,22 @@
+<body>
+	{% include "header.html" %}
+	{% block main %}
+		{% if link_list %}
+			<div class = "main">
+				<table align="center">
+					<tr>
+						<th> Link </th> 
+						<th> Link skrócony </th>
+					</tr>
+					{%for link in link_list%}
+					<tr> 
+						<td> {{link['link']}} </td>
+						<td> {{home_address}}{{link['short_link']}} </td>
+					</tr>
+					{% end %}
+				</table>
+			</div>
+		{% end %}
+	{% end %}
+</body>
+</html>
